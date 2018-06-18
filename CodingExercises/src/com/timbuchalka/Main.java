@@ -3,10 +3,11 @@ package com.timbuchalka;
 class Main {
 
     public static void main(String[] args) {
-//        printMegaBytesAndKiloBytes(486156186);
+
 //        checkNumber(-5);
 //        checkNumber(5);
 //        checkNumber(0);
+//        printMegaBytesAndKiloBytes(486156186);
 //        System.out.println(bark(true, 25));
 //        System.out.println(isLeapYear(1800));
 //        System.out.println(areEqualByThreeDecimalPlaces(3.175, 3.1756));
@@ -16,7 +17,76 @@ class Main {
 //        System.out.println(area(20));
 //        printYearsAndDays(181555861);
 //        printEqual(1, 2, 0);
-        System.out.println(isCatPlaying(true,40));
+//        System.out.println(isCatPlaying(true,40));
+//        printNumberInWord(0);
+        System.out.println(isLeapYear(1992));
+        System.out.println(getDaysInMonth(2, 1992));
+
+    }
+
+    public static int getDaysInMonth(int month, int year) {
+        if ((month < 1 || month > 12) || (year < 1 || year > 9999)) return -1;
+        else {
+            switch (month) {
+                case 1:case 3:case 5:case 7:case 8:case 10:case 12:
+                    return 31;
+                case 4:case 6:case 9:case 11:
+                    return 30;
+                case 2:
+                    if (isLeapYear(year) == true) return 29;
+                    else return 28;
+                default:
+                    return -1;
+            }
+        }
+    }
+
+    public static boolean isLeapYear(int year) {
+        if (year >= 1 && year <= 9999) {
+            if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+                return true;
+            }
+            return false;
+        } else {
+            return false;
+        }
+    }
+
+    public static void printNumberInWord(int number) {
+        switch (number) {
+            case 0:
+                System.out.println("ZERO");
+                break;
+            case 1:
+                System.out.println("ONE");
+                break;
+            case 2:
+                System.out.println("TWO");
+                break;
+            case 3:
+                System.out.println("THREE");
+                break;
+            case 4:
+                System.out.println("FOUR");
+                break;
+            case 5:
+                System.out.println("FIVE");
+                break;
+            case 6:
+                System.out.println("SIX");
+                break;
+            case 7:
+                System.out.println("SEVEN");
+                break;
+            case 8:
+                System.out.println("EIGHT");
+                break;
+            case 9:
+                System.out.println("NINE");
+                break;
+            default:
+                System.out.println("OTHER");
+        }
     }
 
     public static boolean isCatPlaying(boolean summer, int temperature) {
@@ -27,7 +97,6 @@ class Main {
         if (temperature <= 35 && temperature >= 25) return true;
         return false;
     }
-
 
     public static void printEqual(int a, int b, int c) {
         if (a < 0 || b < 0 || c < 0) System.out.println("Invalid Value");
@@ -81,19 +150,19 @@ class Main {
         else return false;
     }
 
-    public static boolean isLeapYear(int year) {
-        if (year < 1 || year > 9999) {
-            return false;
-        } else {
-            if (year % 4 == 0 && year % 100 != 0) {
-                return true;
-            } else if (year % 400 == 0) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    }
+//    public static boolean isLeapYear(int year) {
+//        if (year < 1 || year > 9999) {
+//            return false;
+//        } else {
+//            if (year % 4 == 0 && year % 100 != 0) {
+//                return true;
+//            } else if (year % 400 == 0) {
+//                return true;
+//            } else {
+//                return false;
+//            }
+//        }
+//    }
 
     public static boolean bark(boolean barking, int hourOfDay) {
         if (hourOfDay < 0 || hourOfDay > 23) {
