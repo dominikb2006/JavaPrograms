@@ -23,9 +23,82 @@ class Main {
 //        System.out.println(getDaysInMonth(2, 1992));
 //        forstatement();
 //        System.out.println(sumOdd(10,20));
+//        System.out.println(isPalindrome(-111));
+//        System.out.println(sumFirstAndLastDigit(11));
+//        System.out.println(getEvenDigitSum(234));
+//        System.out.println(hasSharedDigit(12, 21));
+//        System.out.println(hasSameLastDigit(889,89,10));
+
+
+    }
+//skonczone na GreatestCommonDivisor
+    public static boolean hasSameLastDigit(int a,int b,int c){
+        if(a<10||a>1000||b<10||b>1000||c<10||c>1000) return false;
+        else{
+            int a1=a%10;
+            int b1=b%10;
+            int c1=c%10;
+            if(a1==b1||a1==c1||b1==c1) return true;
+            else return false;
+        }
     }
 
+    public static boolean hasSharedDigit(int start, int end) {
+        if (start < 10 || start > 99 || end < 10 || end > 99) return false;
+        else {
+            int s1, s2, e1, e2;
+            s1 = start % 10;
+            s2 = start / 10 % 10;
+            e1 = end % 10;
+            e2 = end / 10 % 10;
+            if (s1 == e1 || s1 == e2 || s2 == e1 || s2 == e2) return true;
+            else return false;
+        }
+    }
 
+    public static int getEvenDigitSum(int number) {
+        if (number < 0) {
+            return -1;
+        } else {
+            int sum = 0;
+            int rest;
+            while (number > 0) {
+                rest = number % 10;
+//                 if (number % 2 == 0) {
+                if (isOdd(rest) == false) {
+                    sum += rest;
+                }
+                number /= 10;
+            }
+            return sum;
+        }
+    }
+
+    public static int sumFirstAndLastDigit(int number) {
+        if (number >= 0) {
+            int last = number % 10;
+            while (number >= 10) {
+                number /= 10;
+            }
+            int first = number;
+            int sum = first + last;
+            return sum;
+        } else return -1;
+    }
+
+    public static boolean isPalindrome(int number) {
+        int src = number;
+        int reverse = 0;
+        int temp;
+        while (number != 0) {
+            reverse *= 10;
+            temp = number % 10;
+            number /= 10;
+            reverse += temp;
+        }
+        if (src == reverse) return true;
+        else return false;
+    }
 
     public static boolean isOdd(int number) {
         if (number > 0) {
@@ -35,6 +108,7 @@ class Main {
             return false;
         } else return false;
     }
+
     public static int sumOdd(int start, int end) {
         int sum = 0;
         if (end >= start && end > 0 && start > 0) {
@@ -177,12 +251,10 @@ class Main {
         return area;
     }
 
-
     public static boolean hasTeen(int a, int b, int c) {
         if ((a >= 13 && a <= 19) || (b >= 13 && b <= 19) || (c >= 13 && c <= 19)) return true;
         return false;
     }
-
 
     public static boolean hasEqualSum(int a, int b, int c) {
         if (a + b == c) return true;
