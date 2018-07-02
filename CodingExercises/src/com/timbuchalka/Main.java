@@ -28,17 +28,141 @@ class Main {
 //        System.out.println(getEvenDigitSum(234));
 //        System.out.println(hasSharedDigit(12, 21));
 //        System.out.println(hasSameLastDigit(889,89,10));
+//        System.out.println(getGreatestCommonDivisor(15, 25));
+//        printFactors(10);
+//        System.out.println(isPerfectNumber(33550336));
+//        int test = 2563000;
+//        System.out.println(getDigitCount(test));
+//        System.out.println(reverse(test));
+//        numberToWords(test);
 
 
     }
-//skonczone na GreatestCommonDivisor
-    public static boolean hasSameLastDigit(int a,int b,int c){
-        if(a<10||a>1000||b<10||b>1000||c<10||c>1000) return false;
-        else{
-            int a1=a%10;
-            int b1=b%10;
-            int c1=c%10;
-            if(a1==b1||a1==c1||b1==c1) return true;
+
+    public static void numberToWords(int number) {
+        if (number < 0) System.out.println("Invalid Value");
+        else {
+            int n = reverse(number);
+            for (int i = 0; i < getDigitCount(number); i++) {
+                if (n > 0) {
+                    switch (n % 10) {
+                        case 1:
+                            System.out.println("One");
+                            break;
+                        case 2:
+                            System.out.println("Two");
+                            break;
+                        case 3:
+                            System.out.println("Three");
+                            break;
+                        case 4:
+                            System.out.println("Four");
+                            break;
+                        case 5:
+                            System.out.println("Five");
+                            break;
+                        case 6:
+                            System.out.println("Six");
+                            break;
+                        case 7:
+                            System.out.println("Seven");
+                            break;
+                        case 8:
+                            System.out.println("Eight");
+                            break;
+                        case 9:
+                            System.out.println("Nine");
+                            break;
+                        case 0:
+                            System.out.println("Zero");
+                            break;
+                    }
+                } else if (n == 0) {
+                    System.out.println("Zero");
+                }
+                n /= 10;
+            }
+        }
+    }
+
+    public static int reverse(int number) {
+        int src = number;
+        int a;
+        int sum = 0;
+        if (number < 0) number *= -1;
+        while (number >= 1) {
+            sum *= 10;
+            a = number % 10;
+            sum += a;
+            number /= 10;
+        }
+        if (src < 0) return -sum;
+        else return sum;
+    }
+
+    public static int getDigitCount(int number) {
+        if (number < 0) return -1;
+        else {
+            int n = 1;
+            while (number >= 10) {
+                if (number / 10 >= 0) n += 1;
+                number /= 10;
+            }
+            return n;
+        }
+    }
+
+    public static boolean isPerfectNumber(int number) {
+        if (number < 1) return false;
+        else {
+            int sum = 0;
+            for (int i = 1; i < number; i++) {
+                if (number % i == 0) sum += i;
+            }
+            if (sum == number) return true;
+            else return false;
+        }
+    }
+
+    public static void printFactors(int number) {
+        if (number < 1) System.out.println("Invalid Value");
+        else {
+            for (int i = 1; i <= number; i++) {
+                if (number % i == 0) System.out.println(i);
+            }
+        }
+    }
+
+    public static int getGreatestCommonDivisor(int first, int second) {
+        if (first < 10 || second < 10) return -1;
+        else {
+            int min, max;
+            int n = 0;
+            if (first <= second) {
+                min = first;
+                max = second;
+            } else {
+                min = second;
+                max = first;
+            }
+            int i = 1;
+            while (i <= min) {
+                if (min % i == 0 && max % i == 0) {
+                    n = i;
+                }
+                i++;
+            }
+            return n;
+        }
+    }
+
+    public static boolean hasSameLastDigit(int a, int b, int c) {
+        if (a < 10 || a > 1000 || b < 10 || b > 1000 || c < 10 || c > 1000) return false;
+        else {
+            int a1 = a % 10;
+            int b1 = b % 10;
+            int c1 = c % 10;
+            if (a1 == b1 || a1 == c1 || b1 == c1) return true;
             else return false;
         }
     }
