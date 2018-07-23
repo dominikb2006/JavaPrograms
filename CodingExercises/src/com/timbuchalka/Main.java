@@ -35,8 +35,66 @@ class Main {
 //        System.out.println(getDigitCount(test));
 //        System.out.println(reverse(test));
 //        numberToWords(test);
+//        System.out.println(canPack(2, 1, 5));
+//        System.out.println(getLargestPrime(45));
+        printSquareStar(10);
 
+    }
 
+    public static void printSquareStar(int number) {
+        if (number < 5) System.out.println("Invalid Value");
+        else {
+            for (int i = 1; i <= number; i++) {
+                System.out.print("*");
+
+                for (int j = 2; j < number; j++) {
+                    if (i == 1 || i == number) {
+                        System.out.print("*");
+                    } else if (i == j || j == number - i + 1) {
+                        System.out.print("*");
+                    } else {
+                        System.out.print(" ");
+                    }
+                }
+                System.out.print("*");
+                System.out.println();
+            }
+        }
+    }
+
+    public static int getLargestPrime(int number) {
+        if (number >= 0) {
+            boolean isPrime;
+            for (int i = number; i > 1; i--) {
+                if (number % i == 0) {
+                    isPrime = true;
+                    for (int j = 2; j <= i / 2; j++) {
+                        if (i % j == 0) {
+                            isPrime = false;
+                            continue;
+                        }
+                    }
+                    if (isPrime == true) {
+                        return i;
+                    }
+                }
+            }
+            return -1;
+        } else return -1;
+    }
+
+    public static boolean canPack(int bigCount, int smallCount, int goal) {
+        if (bigCount < 0 || smallCount < 0 || goal < 0) return false;
+        else {
+            for (int i = 0; i <= bigCount; i++) {
+                for (int j = 0; j <= smallCount; j++) {
+                    if (i * 5 + j == goal) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
     }
 
     public static void numberToWords(int number) {
